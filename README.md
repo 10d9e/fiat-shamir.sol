@@ -3,7 +3,7 @@
 
 *WIP*
 
-Fiat-Shamir dark alchemy implemented in Solidity as a way for users to provide proofs of secret offchain knowledge sans with sending hashes vulnerable to dictionary attacks.
+Fiat-Shamir dark alchemy implemented in Solidity as a way for users to provide proofs of secret offchain knowledge without sending hashes vulnerable to dictionary attacks.
 
 gr <sup>yc</sup> = g <sup>v-cx</sup> (g<sup>x</sup>)<sup>c</sup>
 
