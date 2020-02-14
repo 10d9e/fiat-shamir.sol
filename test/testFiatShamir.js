@@ -29,7 +29,7 @@ contract('Test Fiat-Shamir Zero Knowledge Proof contract', async (accounts) => {
         console.log(x.toString())
     })
 
-	it("Phase 1: Register seed", async () => {        
+    it("Phase 1: Register seed", async () => {        
         console.log('Calculate seed')
         let zkp = await FiatShamirZKP.deployed()
         let y = bigInt(g).modPow(x, n)
