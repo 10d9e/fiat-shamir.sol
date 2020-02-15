@@ -2,6 +2,8 @@ import sys
 import random
 import hashlib
 
+# ref: https://asecuritysite.com/encryption/fiat2
+
 n=16238557847571361432079207259416643917456544702863121607771071554190210386009
 
 # n=997
