@@ -11,14 +11,14 @@ Fiat-Shamir dark alchemy implemented in Solidity as a way for users to provide p
 ### How to use
 For concrete example see [test](https://github.com/jlogelin/crypto/blob/master/test/testFiatShamir.js)
 
-1. Generate a random prime number(n) and generator value(g).
-2. Hash secret data offchain (x) Calculate y value as: y = g<sup>x</sup> <sub>mod n</sub>
-3. Send n, g, y as seed values to the `FiatShamirZKP.registerSeed()` function.
-4. Later, when the user wishes to verify offchain data, retrieve random challenge c from contract with `FiatShamirZKP.getChallenge()`
-5. User generates a random number v between 0 and n and calculates t as: t = g<sup>v</sup> <sub>mod n</sub>
-6. User calculates r as: r = v - c * x
+1. Generate a random prime number (n) and generator value(g).
+2. Hash secret data offchain (x) Calculate (y) value as: y = g<sup>x</sup> <sub>(mod n)</sub>
+3. Send (n, g, y) as seed values to the `FiatShamirZKP.registerSeed()` function.
+4. Later, when the user wishes to verify offchain data, retrieve random challenge (c) from contract with `FiatShamirZKP.getChallenge()`
+5. User generates a random number (v) between 0 and n and calculates (t) as: t = g<sup>v</sup> <sub>(mod n)</sub>
+6. User calculates (r) as: r = v - c * x
 7. User sends t and r as the zkproof to `FiatShamirZKP.verify()`. (At no point is x or v sent to the contract)
-8. The contract calculates ( g<sup>r</sup> <sub>mod n</sub> * y<sup>c</sup> <sub>mod n</sub> ) verifying the resulting value with t.
+8. The contract calculates ( g<sup>r</sup> <sub>(mod n)</sub> * y<sup>c</sup> <sub>(mod n)</sub> ) verifying the resulting value with t.
 
 The proof works because:
 
