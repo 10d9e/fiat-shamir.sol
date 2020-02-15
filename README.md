@@ -6,7 +6,7 @@
 Fiat-Shamir dark alchemy implemented in Solidity as a way for users to provide proofs of secret offchain knowledge without sending hashes vulnerable to dictionary attacks. Instead of a trusted setup ceremony as with a zk-snark, the "zk-niro" users derive proofs with a secret random nonce and and public random challenge from the contract during each proof verification.
 
 ### Applications
-* Offchain password/data verification. Users can manage their own data locally and verify it against a smart contract.
+* Offchain password/data verification. Users can manage their own data locally and offchain and verify it's existance against a smart contract.
 
 ### How to use
 For concrete example see [test](https://github.com/jlogelin/crypto/blob/master/test/testFiatShamir.js)
