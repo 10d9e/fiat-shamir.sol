@@ -38,3 +38,5 @@ Currently the library works well within the confines of solidity's 256 word size
 
 ### References
 [How To Prove Yourself: Practical Solutions to Identification and Signature Problems ](https://link.springer.com/content/pdf/10.1007/3-540-47721-7_12.pdf)
+
+[Professor Bill Buchanan, OBE](https://www.youtube.com/watch?v=n2WUJyk9cHA)
