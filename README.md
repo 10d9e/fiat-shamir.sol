@@ -32,7 +32,7 @@ gr <sup>yc</sup> = g <sup>v-cx</sup> (g<sup>x</sup>)<sup>c</sup>
 
 ### To Do
 
-Currently the library works well within the confines of solidity's 256 word sizes. This is ok for the purposes of research and experimentation, however it is more desirable to have a smart contract system that plays well with very large primes. Fortunately, new iterations of the EVM have included opcodes that map to bignumber precompile operations (mod, expmod, etc.) and there has been some research and development integrating these functions into solidity.
+Currently the library works well within the confines of solidity's 256 bit word sizes. This is ok for the purposes of research and experimentation, however it is more desirable to have a smart contract system that plays well with very large primes. Fortunately, new iterations of the EVM have included opcodes that map to bignumber precompile operations (mod, expmod, etc.) and there has been some research and development integrating these functions into solidity.
 
 [Zcoin BigNumber Library](https://github.com/zcoinofficial/solidity-BigNumber)
 
