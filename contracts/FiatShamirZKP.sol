@@ -51,9 +51,9 @@ contract FiatShamirZKP {
     function verify(uint t, uint256 r) public view returns (bool) {
         uint256 result = 0;
         if (lessThanZero(r)){
-            result = (invmod(modexp(g, -r, n), n) * modexp(y, c, n)) % n;
+            result = (invmod(expmod(g, -r, n), n) * expmod(y, c, n)) % n;
         }else{
-            result = (modexp(g, r, n) * modexp(y, c, n)) % n;
+            result = (expmod(g, r, n) * expmod(y, c, n)) % n;
         }
         return (t == result);
     }
@@ -61,27 +61,30 @@ contract FiatShamirZKP {
     function lessThanZero(uint256 x) internal pure returns (bool) {
         return (x > 21888242871839275222246405745257275088548364400416034343698204186575808495617);
     }
-    
-    function modexp(uint256 base, uint256 exponent, uint256 modulus) internal view returns (uint256) {
-        uint256[6] memory input;
-        uint256[1] memory output;
-        input[0] = 0x20;  // length_of_BASE
-        input[1] = 0x20;  // length_of_EXPONENT
-        input[2] = 0x20;  // length_of_MODULUS
-        input[3] = base;
-        input[4] = exponent;
-        input[5] = modulus;
-        assembly {
-            if iszero(staticcall(not(0), 5, input, 0xc0, output, 0x20)) {
-                revert(0, 0)
-            }
-        }
-        return output[0];
+
+    function expmod(uint base, uint e, uint m) public view returns (uint o) {  
+      assembly {
+       // define pointer
+       let p := mload(0x40)
+       // store data assembly-favouring ways
+       mstore(p, 0x20)             // Length of Base
+       mstore(add(p, 0x20), 0x20)  // Length of Exponent
+       mstore(add(p, 0x40), 0x20)  // Length of Modulus
+       mstore(add(p, 0x60), base)  // Base
+       mstore(add(p, 0x80), e)     // Exponent
+       mstore(add(p, 0xa0), m)     // Modulus
+       if iszero(staticcall(sub(gas, 2000), 0x05, p, 0xc0, p, 0x20)) {
+         revert(0, 0)
+       }
+       // data
+       o := mload(p)
+      }
     }
 
-    function modexp(uint256 base, uint256 exponent) internal view returns (uint256) {
+
+    function expmod(uint256 base, uint256 exponent) internal view returns (uint256) {
         uint256 q = 21888242871839275222246405745257275088548364400416034343698204186575808495617;
-        return modexp(base, exponent, q);
+        return expmod(base, exponent, q);
     }
     
     /// @dev Modular inverse of a (mod p) using euclid.
