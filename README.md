@@ -1,4 +1,4 @@
-# Zero Knowledge Proofs with Fiat-Shamir Heuristic 
+# Solidity Zero Knowledge Proofs with Fiat-Shamir Heuristic 
 ### ( aka. Non-Interactive Random Oracle Access for Zero-Knowledge Proofs )
 
 *WIP*
